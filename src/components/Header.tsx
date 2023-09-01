@@ -29,7 +29,7 @@ let items = [
   {
     label: "Mint",
     url: "/mint",
-    enabled: false
+    enabled: true
   }
 ]
 
