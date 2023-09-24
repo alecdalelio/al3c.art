@@ -1,13 +1,13 @@
 import { Box, Typography } from "@mui/material";
-import GenArt721MinterInterface from "components/MinterInterfaces/GenArt721MinterInterface";
+import MinterSetPriceV5Interface from "components/MinterInterfaces/MinterSetPriceV5Interface";
 import Page from "components/Page";
 
 const MintPage = () => {
-  const coreContractAddress = "0x8946B8E2BD0eB05C7b6b2eDd9E8826556000D9eC";
-  const mintContractAddress = "0x86E63Bf8619446226BE43AD05eA9a42790775DdE";
-  const projectId = "0";
-  const artistAddress = "0x6E9cb366000470626Ee0b4103Dc9F77CcA19243B";
-  const scriptAspectRatio = 1.33;
+  const coreContractAddress = "0x730d0C5891e3682D0f8Bd0F2dd52ED10eaE90570";
+  const mintContractAddress = "0x1F3DF1E177B419bC46705F8138809893497aAadF";
+  const artistAddress = "0x4a8557FFC313a398904daE6e5561eE216a04602D";
+  const scriptAspectRatio = 1.333;
+  const projectId = "1";
 
   return (
     <Page>
@@ -16,7 +16,7 @@ const MintPage = () => {
           <Typography variant="h1" fontSize={64}>
             Mint
           </Typography>
-          <GenArt721MinterInterface
+          <MinterSetPriceV5Interface
             coreContractAddress={coreContractAddress}
             mintContractAddress={mintContractAddress}
             projectId={projectId}
