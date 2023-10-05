@@ -33,10 +33,10 @@ const OwnedProjects = ({ walletAddress }: Props) => {
 
   useEffect(() => {
     setFilteredProjects(data?.projects?.filter((project: { tokens: string | any[] }) => {
-      return project.tokens.length > 0
+        return project.tokens.length > 0
     }))
     setCountOwnedProjects(countOwnedProjectsResponse.data?.projects?.filter((project: { tokens: string | any[] }) => {
-      return project.tokens.length > 0
+          return project.tokens.length > 0
     }).length)
   }, [data, countOwnedProjectsResponse])
 
@@ -47,8 +47,8 @@ const OwnedProjects = ({ walletAddress }: Props) => {
         <Box sx={{display: "flex", alignItems: "center", marginRight: "25px"}}>
           <Box>
             {
-              !error && !loading && filteredProjects?.length > 0 &&
-              (
+            !error && !loading && filteredProjects?.length > 0 &&
+            (
               <FormControl fullWidth sx={{marginBottom: "50px"}}>
                 <NativeSelect
                   value={orderDirection}
@@ -62,66 +62,66 @@ const OwnedProjects = ({ walletAddress }: Props) => {
                   <option value={OrderDirection.ASC}>Oldest</option>
                 </NativeSelect>
               </FormControl>
-              )
+            )
             }
           </Box>
         </Box>
       </Box>
       <Box sx={{marginTop: "-100px"}}>
         {
-          loading ?
-          (
-            <Box marginTop={10}>
-              <Loading/>
-            </Box>
-          ) :
-          error ?
-          (
-            <Box marginTop={10}>
-              <Alert severity="error">
-                Error loading projects
+        loading ?
+        (
+          <Box marginTop={10}>
+            <Loading/>
+          </Box>
+        ) :
+        error ?
+        (
+          <Box marginTop={10}>
+            <Alert severity="error">
+              Error loading projects: {error.message}
+            </Alert>
+          </Box>
+        ) :
+        filteredProjects?.length > 0 ?
+        (
+          <Grid container spacing={3} sx={{margin: "32px 0"}}>
+            {
+            filteredProjects && (
+              filteredProjects.map((project: Project) => (
+                <Grid item md={12} key={project.id}>
+                  <Link href={`/project/${project.contract.id}/${project.projectId}`} underline="hover">
+                    <Typography variant="h1" fontSize={36}>{project.name} by {project.artistName}</Typography>
+                  </Link>
+                  <OwnedTokens contractAddress={project.contract.id} projectId={project.id} walletAddress={walletAddress} aspectRatio={project.aspectRatio || parseAspectRatio(project.scriptJSON)}/>
+                </Grid>
+              ))
+            )
+            }
+          </Grid>
+        ) :
+        filteredProjects?.length === 0 ? (
+          <Box marginTop={10}>
+            <Alert severity="info">
+              No projects found
               </Alert>
-            </Box>
-          ) :
-          filteredProjects?.length > 0 ?
-          (
-            <Grid container spacing={3} sx={{margin: "32px 0"}}>
-              {
-                filteredProjects && (
-                  filteredProjects.map((project: Project) => (
-                    <Grid item md={12} key={project.id}>
-                      <Link href={`/project/${project.contract.id}/${project.projectId}`} underline="hover">
-                        <Typography variant="h1" fontSize={36}>{project.name} by {project.artistName}</Typography>
-                      </Link>
-                      <OwnedTokens contractAddress={project.contract.id} projectId={project.id} walletAddress={walletAddress} aspectRatio={project.aspectRatio || parseAspectRatio(project.scriptJSON)}/>
-                    </Grid>
-                  ))
-                )
-              }
-            </Grid>
-          ) :
-          filteredProjects?.length === 0 ? (
-            <Box marginTop={10}>
-              <Alert severity="info">
-                No projects found
-              </Alert>
-            </Box>
-          ) :
-          null
+          </Box>
+        ) :
+        null
         }
         {
           !error && !loading && filteredProjects?.length > 0 && (
-            <Box sx={{display: "flex", justifyContent: "center", marginBottom: "50px"}}>
-              <Pagination
-                count={Math.ceil(countOwnedProjects/PROJECTS_PER_PAGE)}
-                color="primary"
-                page={currentPage + 1}
-                onChange={(event, page) => {
-                  window.scrollTo(0, 0)
-                  setCurrentPage(page - 1)
-                }}/>
-            </Box>
-          )
+          <Box sx={{display: "flex", justifyContent: "center", marginBottom: "50px"}}>
+            <Pagination
+              count={Math.ceil(countOwnedProjects/PROJECTS_PER_PAGE)}
+              color="primary"
+              page={currentPage + 1}
+              onChange={(event, page) => {
+                window.scrollTo(0, 0)
+                setCurrentPage(page - 1)
+              }}/>
+          </Box>
+        )
         }
       </Box>
     </Box>

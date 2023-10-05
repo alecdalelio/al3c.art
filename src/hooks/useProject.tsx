@@ -36,15 +36,15 @@ const projectQuery = (id: string) => `
       }
       minterConfiguration {
         basePrice
-        startPrice
         priceIsConfigured
         currencySymbol
         currencyAddress
-        startTime
-        endTime
       }
     }
   }`
+
+
+// NOTE: if using non-set price minters, add startPrice, startTime, endTime to above minter configuration
 
 const useProject = (id: string) => {
   const { loading, error, data } = useQuery(gql(projectQuery(id)))

@@ -56,15 +56,14 @@ const ownedProjectsQuery = (walletAddress: string, { first, skip, orderDirection
       }
       minterConfiguration {
         basePrice
-        startPrice
         priceIsConfigured
         currencySymbol
         currencyAddress
-        startTime
-        endTime
       }
     }
   }`
+
+// NOTE: if using non-set price minters, add startPrice, startTime, endTime to above minter configuration
 
 const useOwnedProjects = (walletAddress: string, params?: Params) => {
   const first = params?.first || PROJECTS_PER_PAGE

@@ -51,15 +51,14 @@ const projectsQuery = ({ first, skip, orderDirection }: ProjectsQueryParams) => 
       }
       minterConfiguration {
         basePrice
-        startPrice
         priceIsConfigured
         currencySymbol
         currencyAddress
-        startTime
-        endTime
       }
     }
   }`
+
+// NOTE: if using non-set price minters, add startPrice, startTime, endTime to above minter configuration
 
 const useProjects = (params?: ProjectsQueryParams) => {
   const first = params?.first || PROJECTS_PER_PAGE
