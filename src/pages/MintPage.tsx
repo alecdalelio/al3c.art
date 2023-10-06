@@ -1,10 +1,18 @@
 import { Box, Typography } from "@mui/material";
 import MinterSetPriceV5Interface from "components/MinterInterfaces/MinterSetPriceV5Interface";
 import Page from "components/Page";
+import {
+  getConfiguredContractAddresses,
+  getConfiguredMinterAddresses,
+} from "utils/contractInfoHelper";
 
 const MintPage = () => {
-  const coreContractAddress = "0x730d0C5891e3682D0f8Bd0F2dd52ED10eaE90570";
-  const mintContractAddress = "0x1F3DF1E177B419bC46705F8138809893497aAadF";
+  const coreContractAddress = getConfiguredContractAddresses()
+    .join('","')
+    .toLowerCase();
+  const minterAddress = getConfiguredMinterAddresses()
+    .join('","')
+    .toLowerCase();
   const artistAddress = "0x4a8557FFC313a398904daE6e5561eE216a04602D";
   const scriptAspectRatio = 1.333;
   const projectId = "1";
@@ -18,7 +26,7 @@ const MintPage = () => {
           </Typography>
           <MinterSetPriceV5Interface
             coreContractAddress={coreContractAddress}
-            mintContractAddress={mintContractAddress}
+            mintContractAddress={minterAddress}
             projectId={projectId}
             artistAddress={artistAddress}
             scriptAspectRatio={scriptAspectRatio}
