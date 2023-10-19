@@ -1,9 +1,7 @@
 # Art Blocks Engine (React Template)
 [![GitPOAPs](https://public-api.gitpoap.io/v1/repo/ArtBlocks/artblocks-engine-react/badge)](https://www.gitpoap.io/gh/ArtBlocks/artblocks-engine-react)
 
-This project is meant to be used as a template to build Art Blocks Engine web apps. It contains all pages and views
-necessary for users to browse projects, tokens and be able to purchase mints. This repository serves as a prototype or
-template.
+This project is meant to be used as a template to build Art Blocks Engine web apps. It contains all pages and views necessary for users to browse projects, tokens and be able to purchase mints. This repository serves as a prototype or template.
 
 It assumes your core contracts are either `GenArt721CoreV2` or `GenArt721CoreV3`, and supports the following minters:
 `GenArt721Minter`, `MinterSetPriceV4`, `MinterSetPriceERC20V4`, `MinterMerkleV5`, and `MinterHolderV4`.
@@ -50,7 +48,7 @@ You must specify an API key from [Infura](https://www.infura.io/) as well as a c
 `1` for mainnet or `5` for goerli. Alternative providers can be used by modifying the `src/components/Providers.tsx`
 file. Use multiple `.env` fields to set up `development` or `staging` environments on `testnet` if you wish to do so.
 
-You must also obtain and supply a projectId from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is free 
+You must also obtain and supply a projectId from [WalletConnect Cloud](https://cloud.walletconnect.com/). This is free
 and only takes a few minutes.
 
 Additionally, you will need to edit the default configuration in the `src/contractConfig.ts` file -
@@ -73,6 +71,8 @@ proof for a given wallet address - the url for this endpoint must be configured 
 `?contractAddress={}&projectId={}&walletAddress={}&isMainnet={}` - this can be customized in the
 `src/components/MinterInterfaces/MinterHolderV4Interface.tsx` file. For an example of this endpoint please see
 [here](https://github.com/plottables/media/blob/main/pages/api/getHolderProof.tsx).
+
+Be sure to populate contractConfig.ts with the appropriate core contract and minter contract addresses.
 
 # Sections and Features
 
